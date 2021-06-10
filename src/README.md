@@ -15,6 +15,15 @@ hello world
 2、通过os.Exit来返回状态
 3、main函数不支持传入参数
 4、在程序中直接通过os.Args获取命令行参数
+5、GO语言不允许隐式类型转换
+6、别名和原有类型也不能进行隐式类型转换
+7、不支持指针运算
+8、string是值类型，其默认的初始化值为空字符串，而不是nil
+一、类型的预定义值
+1、 math.MaxInt64
+2、 math.MaxFloat64
+3、 math.MaxUint32
+
 # go run hello_world.go Yang
 hello world Yang
 ```
