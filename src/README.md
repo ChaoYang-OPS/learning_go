@@ -19,10 +19,34 @@ hello world
 6、别名和原有类型也不能进行隐式类型转换
 7、不支持指针运算
 8、string是值类型，其默认的初始化值为空字符串，而不是nil
+9、Go语言仅支持循环关键字for
+10、if条件
+(1) condition表达式结果必须为布尔值
+(2) 支持变量赋值
+  if var declaration; condition{
+
+  }
+11、 switch条件
+(1) 条件表达式不限制为常量或者整数
+(2) 单个case中，可以出现多个结果选项，使用逗号分隔
+(3) 与C语言等规则相反，GO语言不需要用break来明确退出一个case
+(4) 可以不设定switch之后的条件表达式，在此种情况下，整个switch结构与多个
+位运算符
+&^ 按位置零
+1 &^ 0 -- 1
+1 &^ 1 -- 0
+0 &^ 1 -- 0
+0 &^ 0 -- 0
+
+if .... else....的逻辑作用等同
 一、类型的预定义值
 1、 math.MaxInt64
 2、 math.MaxFloat64
 3、 math.MaxUint32
+
+二、用 == 比较数组
+1、相同维数且含有相同个数元素的数组才可以比较
+2、每个元素都相同的才相等
 
 # go run hello_world.go Yang
 hello world Yang
