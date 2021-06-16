@@ -63,4 +63,21 @@ if .... else....的逻辑作用等同
 4、函数可以作为参数和返回值
 # go run hello_world.go Yang
 hello world Yang
+四、行为(方法)定义
+type Employee struct {
+	Id   string
+	Name string
+	Age  int
+}
+1、第一种定义方式在实例对应方法被调用时，实例的成员会进行复制
+func (e Employee) String() string {
+	return fmt.Sprintf("ID:%s-Name:%s-Age:%d", e.Id, e.Name, e.Age)
+}
+2、通常情况下为了避免内存拷贝我们使用第二种定义方式
+func (e *Employee) String() string {
+	return fmt.Sprintf("ID:%s/Name:%s/Age:%d", e.Id, e.Name, e.Age)
+}
+五、Go接口
+1、 接口为非侵入性，实现不依赖于接口定义
+2、 所以接口的定义可以包含在接口使用者包内
 ```
