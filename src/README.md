@@ -39,7 +39,14 @@ hello world
 0 &^ 0 -- 0
 12 Map元素的访问
 1、在访问Key不存在时，仍会返回零值，不能通过返回nil来判断元素是否存在
+13 字符串
+1、string是数据类型，不是引用或指针类型
+2、string是只读的byte slice,len函数可以它所包含的byte数
+3、string的byte数组可以存放任何数据
 
+13 Unicode UTF8
+1、 Unicode是一种字符集(code point)
+2、 UTF8是unicode的存储实现(转换为字节序列的规则)
 if .... else....的逻辑作用等同
 一、类型的预定义值
 1、 math.MaxInt64
@@ -49,7 +56,11 @@ if .... else....的逻辑作用等同
 二、用 == 比较数组
 1、相同维数且含有相同个数元素的数组才可以比较
 2、每个元素都相同的才相等
-
+三、函数是一等公民
+1、可以有多个返回值
+2、所有参数都是值传递: slice,map,channel会有传引用的错觉
+3、函数可以作为变量的值
+4、函数可以作为参数和返回值
 # go run hello_world.go Yang
 hello world Yang
 ```
