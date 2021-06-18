@@ -48,6 +48,14 @@ hello world
 1、 Unicode是一种字符集(code point)
 2、 UTF8是unicode的存储实现(转换为字节序列的规则)
 if .... else....的逻辑作用等同
+14 Go的错误机制
+1、没有异常机制
+2、error类型实现了error接口
+3、可以通过errors.New来快速创建错误实例
+15、 panic用于不可以恢复的错误
+    panic退出前会执行defer指定的内容
+os.Exit退出时不会调用defer指定的函数
+os.Exit退出时不输出当前调用栈信息
 一、类型的预定义值
 1、 math.MaxInt64
 2、 math.MaxFloat64
@@ -88,4 +96,24 @@ v,ok := p.(int) // ok = true时转换成功
 1、倾向于使用小的接口定义，很多接口只包含一个方法
 2、较大的接口定义，可以由多个小接口定义组合而成
 3、只依赖于必要功能的最小接口
+八、 package
+1、基本复用模块单元
+ 以首字母大写来表明可被包外代码访问
+2、代码的package可以和所在的目录不一致
+3、同一目录里的Go代码的package要保持一致
+4、 init方法
+ (1) 在main被执行前，所有依赖的package的init方法都会被执行
+ (2) 不同包的init函数按照包导入依赖关系决定执行顺序
+ (3) 每个包可以有多个init函数
+ (4) 包的每个源文件也可以有多个init函数，这点比较特殊
+5、 通过go get来获取远程依赖
+  go get -u 强制从网络更新远程依赖
+  注意代码在Github上的组织形式，以适合go get
+  直接以代码路径开始，不要有src
+九、 vendor路径
+查找依赖包路径的解决方案如下:
+ 1、当前包下的vendor目录
+ 2、向上级目录查找，直到找到src下的vendor目录
+ 3、在GOPATH下面查找依赖包
+ 4、在GOROOT目录下查找
 ```
