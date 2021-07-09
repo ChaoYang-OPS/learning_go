@@ -109,5 +109,30 @@ func main() {
 	fmt.Println(nums06[:len(nums06)-1]) // [1 2 3 4]
 
 	// delete index 2
+	copy(nums06[2:], nums06[3:])
+	fmt.Println(nums06)                 // [1 2 4 5 5]
+	fmt.Println(nums06[:len(nums06)-1]) // [1 2 4 5]
 
+	// queue
+
+	queue := []int{}
+	queue = append(queue, 1)
+	queue = append(queue, 2)
+	queue = append(queue, 3)
+	queue = append(queue, 4)
+	queue = append(queue, 5)
+	fmt.Println(queue[0])
+	queue = queue[1:]
+	fmt.Println(queue) // [2 3 4 5]
+
+	// stack
+	stack := []int{}
+	stack = append(stack, 1)
+	stack = append(stack, 2)
+	stack = append(stack, 3)
+	fmt.Println(stack[len(stack)-1])
+	stack = stack[:len(stack)-1]
+	fmt.Println(stack[len(stack)-1])
+	stack = stack[:len(stack)-1]
+	fmt.Println(stack[len(stack)-1])
 }
