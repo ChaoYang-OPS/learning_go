@@ -74,7 +74,7 @@ func main8() {
 	fmt.Printf("%c %d\n", chstr[1], chstr[1]) // Y 89
 }
 
-func main() {
+func main9() {
 	var mystr01 string = "\\r\\n"
 	var mystr02 string = `\r\n`  // 无转义字符串
 	var mystr03 string = `您好啊!`  // 自带换行符
@@ -83,4 +83,26 @@ func main() {
 	fmt.Printf(" %q\n", mystr01) //  "\\r\\n" 原始字符串
 	fmt.Println(mystr03)
 
+}
+func main10() {
+	var cmd string = "uptime123"
+	fmt.Printf("you will exec cmd: %s\n", cmd[0:6])
+	exec.Command(cmd[0:6]).Run()
+}
+
+func main11() {
+	var cmd string = "123uptime"
+	fmt.Printf("you will exec cmd: %s\n", cmd[3:])
+	exec.Command(cmd[3:]).Run()
+}
+
+func main() {
+	var cmd = "uptime"
+	for i := 0; i < len(cmd); i++ {
+		fmt.Printf("%c %d\n", cmd[i], cmd[i])
+	}
+	fmt.Println("--------------------------")
+	for i, ch := range cmd { // 循环每一个字符，每个汉字
+		fmt.Printf("%c %d\n", ch, i)
+	}
 }
