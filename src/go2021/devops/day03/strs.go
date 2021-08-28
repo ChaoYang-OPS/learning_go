@@ -74,11 +74,7 @@ func main8() {
 	fmt.Printf("%c %d\n", chstr[1], chstr[1]) // Y 89
 }
 
-<<<<<<< HEAD
-func main() {
-=======
 func main9() {
->>>>>>> parent of 97628fe... Sun Aug 22 20:31:09 CST 2021 delete go2021 dir
 	var mystr01 string = "\\r\\n"
 	var mystr02 string = `\r\n`  // 无转义字符串
 	var mystr03 string = `您好啊!`  // 自带换行符
@@ -88,8 +84,6 @@ func main9() {
 	fmt.Println(mystr03)
 
 }
-<<<<<<< HEAD
-=======
 func main10() {
 	var cmd string = "uptime123"
 	fmt.Printf("you will exec cmd: %s\n", cmd[0:6])
@@ -112,4 +106,3 @@ func main() {
 		fmt.Printf("%c %d\n", ch, i)
 	}
 }
->>>>>>> parent of 97628fe... Sun Aug 22 20:31:09 CST 2021 delete go2021 dir
