@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os/exec"
+	"strconv"
 	"unsafe"
 )
 
@@ -96,7 +97,7 @@ func main11() {
 	exec.Command(cmd[3:]).Run()
 }
 
-func main() {
+func main12() {
 	var cmd = "uptime"
 	for i := 0; i < len(cmd); i++ {
 		fmt.Printf("%c %d\n", cmd[i], cmd[i])
@@ -105,4 +106,47 @@ func main() {
 	for i, ch := range cmd { // 循环每一个字符，每个汉字
 		fmt.Printf("%c %d\n", ch, i)
 	}
+}
+
+func main13() {
+	var string1, string2, string3, string4 = "12", "12.4", "true", "A"
+	var a int
+	var b float32
+	var c bool
+	var d byte
+	fmt.Sscanf(string1, "%d", &a)
+	fmt.Sscanf(string2, "%f", &b)
+	fmt.Sscanf(string3, "%t", &c)
+	fmt.Sscanf(string4, "%c", &d)
+	fmt.Println(a, b, c, d) // 12 12.4 true 65
+}
+
+func main() {
+	num := 100
+	str := strconv.Itoa(num) // 快速整数转换为字符串
+	fmt.Printf("%T value %#v\n", str, str)
+
+	str1 := "110"
+	str2 := "s100"
+
+	num1, err := strconv.Atoi(str1)
+	if err != nil {
+		fmt.Printf("%v 转换失败!", str1)
+	} else {
+		fmt.Printf("%T value: %#v\n", num1, num1)
+	}
+
+	num2, err := strconv.Atoi(str2)
+
+	if err != nil {
+		fmt.Printf("%v 转换失败!\n", str2)
+	} else {
+		fmt.Printf("%T value: %#v\n", num2, num2)
+	}
+
+	nums := true
+
+	str5 := strconv.FormatBool(nums)
+	fmt.Printf("%T | %#v\n", str5, str5) // string | "true"
+
 }
