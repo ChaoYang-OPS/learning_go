@@ -31,26 +31,6 @@ func splitArray(array []string, num int64) [][]string {
 	return result
 }
 
-// func splitArray(array []string, num int64) [][]string {
-// 	max := int64(len(array))
-// 	if max < int64(num) {
-// 		return nil
-// 	}
-// 	var segmens = make([][]string, 0)
-// 	quantity := max / num
-// 	end := int64(0)
-// 	for i := int64(1); i <= num; i++ {
-// 		qu := i * quantity
-// 		if i != num {
-// 			segmens = append(segmens, array[i-1+end:qu])
-// 		} else {
-// 			segmens = append(segmens, array[i-1+end:])
-// 		}
-// 		end = qu - i
-// 	}
-// 	return segmens
-// }
-
 func main() {
 	data := map[string][]string{"projectId1": []string{"sha256", "v1", "createtime", "expiretime", "true", "sha256", "v2", "createtime", "expiretime", "false", "sha256", "v2", "createtime", "expiretime", "false"},
 		"projectId2": []string{"sha256", "v2", "createtime", "expiretime", "true"},
@@ -85,4 +65,7 @@ func main() {
 
 	}
 	// fmt.Printf("%#v\n", res)
+	// []string{"sha256", "v1", "createtime", "expiretime", "true"}
+	// []string{"sha256", "v2", "createtime", "expiretime", "false"}
+	// []string{"sha256", "v2", "createtime", "expiretime", "false"}
 }
