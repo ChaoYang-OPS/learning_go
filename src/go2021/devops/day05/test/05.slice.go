@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/olekukonko/tablewriter"
+)
 
 func splitArray(array []string, num int64) [][]string {
 	if int64(num) > int64(len(array)) {
@@ -32,34 +37,36 @@ func splitArray(array []string, num int64) [][]string {
 }
 
 func main() {
-	data := map[string][]string{"projectId1": []string{"sha256", "v1", "createtime", "expiretime", "true", "sha256", "v2", "createtime", "expiretime", "false", "sha256", "v2", "createtime", "expiretime", "false"},
-		"projectId2": []string{"sha256", "v2", "createtime", "expiretime", "true"},
-		"projectId3": []string{"sha256", "v3", "createtime", "expiretime", "false"},
-		"projectId4": []string{"sha256", "v4", "createtime", "expiretime", "true"},
+	data := map[string][]string{"T21": []string{"T21", "sha256", "v1", "createtime", "expiretime", "false", "T21", "sha256", "v2", "createtime", "expiretime", "false", "T21", "sha256", "v2", "createtime", "expiretime", "true"},
+		"T22": []string{"T22", "sha256", "v2", "createtime", "expiretime", "true"},
+		"T23": []string{"T23", "sha256", "v3", "createtime", "expiretime", "false"},
+		"T24": []string{"T24", "sha256", "v4", "createtime", "expiretime", "true"},
 	}
-	res := make([]string, 0)
+	isExpired := "true"
+	eNums := 6
+	tableHeader := []string{}
+	tableString := &strings.Builder{}
+	table := tablewriter.NewWriter(tableString)
 	// fmt.Printf("%#v\n", data)
 	for _, v := range data {
-		// fmt.Printf("%#v----%#v\n", v, cap(v))
-		// for _, k := range v {
-		// 	// fmt.Printf("%#v---%#v\n", s, k)
-		// 	tmp := strings.Split(k, " ")
-		// 	fmt.Printf("%#v\n", tmp[:])
-		// }
-		// fmt.Printf("%#v\n", v[:5])
-		if cap(v) == 5 {
-			// fmt.Printf("%#v\n", v[4])
-			if v[4] == "true" {
-				// fmt.Printf("%#v\n", v)
-				res = append(res, v...)
+		if cap(v) == eNums {
+			// if v[5] == "true" {
+			// 	table.Append(v)
+			// }
+			if v[len(v)-1] == isExpired {
+				table.Append(v)
 			}
 		}
-		if cap(v) > 5 {
-			count := cap(v) / 5
-			res := splitArray(v, int64(count))
-			// fmt.Printf("%#v\n", res)
-			for _, v1 := range res {
-				fmt.Printf("%#v\n", v1)
+		if cap(v) > eNums {
+			count := cap(v) / eNums
+			result := splitArray(v, int64(count))
+			for _, v2 := range result {
+				// if v2[5] == "true" {
+				// 	table.Append(v2)
+				// }
+				if v2[len(v2)-1] == isExpired {
+					table.Append(v2)
+				}
 			}
 		}
 
@@ -68,4 +75,10 @@ func main() {
 	// []string{"sha256", "v1", "createtime", "expiretime", "true"}
 	// []string{"sha256", "v2", "createtime", "expiretime", "false"}
 	// []string{"sha256", "v2", "createtime", "expiretime", "false"}
+	table.SetRowLine(true)
+	table.SetHeader(tableHeader)
+	table.SetCaption(true, "Movie ratings.")
+	table.Render() // Send output
+
+	fmt.Println(tableString.String())
 }
